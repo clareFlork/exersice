@@ -1,0 +1,10 @@
+{
+  "name": "exercise-mvp",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "postinstall": "npm --prefix backend install",
+    "start": "npm --prefix backend start",
+    "test": "npm --prefix backend test"
+  }
+}

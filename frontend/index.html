@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>姿勢教練｜邊看影片邊矯正深蹲</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">◢</span> 姿勢教練 <span class="tag">MVP · 深蹲</span></div>
+    <div class="url-bar">
+      <input id="yt-url" type="url" placeholder="貼上 YouTube 運動影片連結，例如 https://www.youtube.com/watch?v=..." autocomplete="off" />
+      <button id="load-btn" class="btn btn-primary">載入影片</button>
+    </div>
+  </header>
+  <p id="url-error" class="url-error" role="alert"></p>
+
+  <main class="stage">
+    <!-- 左：影片 -->
+    <section class="panel">
+      <div class="panel-head"><h2>① 跟練影片</h2></div>
+      <div class="player-wrap">
+        <div id="player"></div>
+        <div class="placeholder">在上方貼上 YouTube 連結後按「載入影片」</div>
+      </div>
+    </section>
+
+    <!-- 右：鏡頭 -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>② 你的姿勢</h2>
+        <button id="camera-btn" class="btn">開啟鏡頭</button>
+      </div>
+      <div class="cam-wrap">
+        <video id="cam" playsinline muted></video>
+        <canvas id="overlay"></canvas>
+        <div id="cam-placeholder" class="placeholder">按「開啟鏡頭」並允許瀏覽器使用攝影機<br /><small>影像只在你的電腦上分析，不會上傳</small></div>
+        <div class="hud">
+          <div id="hint" class="hint hint-idle">尚未開始</div>
+          <div id="hint-sub" class="hint-sub">開啟鏡頭 → 載入影片 → 開始運動</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="controls">
+    <div class="stats">
+      <div class="stat big"><span id="reps">0</span><label>完成次數</label></div>
+      <div class="stat good"><span id="good">0</span><label>恰好</label></div>
+      <div class="stat shallow"><span id="shallow">0</span><label>太淺</label></div>
+      <div class="stat deep"><span id="deep">0</span><label>太深</label></div>
+      <div class="stat"><span id="angle">--</span><label>膝蓋角度</label></div>
+      <div class="stat"><span id="timer">00:00</span><label>時間</label></div>
+    </div>
+    <div class="actions">
+      <label class="toggle"><input id="voice" type="checkbox" checked /> 語音提示</label>
+      <button id="start-btn" class="btn btn-primary btn-lg" disabled>▶ 開始運動</button>
+      <button id="end-btn" class="btn btn-danger btn-lg" disabled>■ 結束運動</button>
+    </div>
+  </section>
+
+  <section class="history-panel">
+    <h2>③ 運動紀錄</h2>
+    <ul id="history" class="history"></ul>
+  </section>
+
+  <div id="toast" class="toast" hidden></div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
